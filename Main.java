@@ -5,8 +5,22 @@ public class Main {
         try {
             String email = getEmail();
             System.out.println("Ваш адрес электронной почты: " + email);
-        } catch (NotCorrectEmailFormatException e) {
-            System.out.println("Ошибка: " + e.getMessage()); //при ошибке
+            System.out.println("------------Задача2-----------");
+            Programmer programmer = new Programmer("Иван", "доступен");
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Введите задачу для программиста: ");
+            String task = scanner.nextLine();
+            try {
+                String result = programmer.doWork(task);
+                System.out.println("Результат работы программиста: " + result);
+            } catch (ProgrammerBusyException k) {
+                System.out.println("Программист занят другой задачей.");
+            } catch (ProgrammerUnavailableNowException l) {
+                System.out.println("Программист не доступен.");
+            }
+            } catch (NotCorrectEmailFormatException e) {
+                System.out.println("Ошибка: " + e.getMessage());
+
         }
     }
 public static String getEmail() throws NotCorrectEmailFormatException { //throws класса если метод не безопасен и может вызвать эксепшны
@@ -23,4 +37,8 @@ public static String getEmail() throws NotCorrectEmailFormatException { //throws
         throw new NotCorrectEmailFormatException("@ - не должна быть первой или последней.");
     }
     return email; //если все ок то супер
-}}
+}
+}
+
+
+
